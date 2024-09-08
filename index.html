@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Foobar</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/dracula.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
+
+## HTMX Fundamentals
+
+Note: Hello everyone! This small brownbag will just go over the fundamentals of HTMX but stay until the end for a small announcement.
+
+---
+
+> HTMX is a library that allows you to access modern browser features directly from HTML, rather than using javascript code.
+
+- **From their website**
+
+---
+
+### Features
+
+<ul>
+    <li class="fragment">Add support for the rest of verbs besides `post` and `get`: `put`, `delete`, `patch`</li>
+    <li class="fragment">Extend HTML so any element can issue requests, not just anchors and forms</li>
+    <li class="fragment">Extend HTML to allow for more complex interactions besides just clicks, you can trigger using hover, blur and many other ways to interact</li>
+    <li class="fragment">Extend HTML to allow for targets other than the entire window</li>
+    <li class="fragment">Allow engineers to defer state management to the backend, through HATEOAS!</li>
+</ul>
+
+---
+
+### HATEOAS?
+
+A small detour
+
+---
+
+### It's simple
+
+<p class="fragment">Hypermedia As The Engine Of Application State</p>
+
+---
+
+Easy, right? 😅
+
+---
+
+All state is encoded in hypermedia returned by the server.
+
+---
+
+### What does that mean?
+
+Not logged in
+
+```html[1-5]
+<ul>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/register">Register</a></li>
+</ul>
+```
+
+Logged in
+
+```html[1-7]
+<div>
+    <h1>Welcome, John Doe</h1>
+</div>
+<ul>
+    <li><a href="/profile">Profile</a></li>
+    <li><a href="/logout">Logout</a></li>
+</ul>
+```
+---
+
+### Why HATEOAS?
+
+<ul>
+    <li class="fragment">Only show what the user can do</li>
+    <li class="fragment">Server only responds with what it knows, not what the client needs to know</li>
+    <li class="fragment">Intuitive, discoverable web applications</li>
+</ul>
+
+<p class="fragment">HATEOAS is for humans</p>
+
+Note: Mention Roy Fielding's excellent doctoral paper, coining REST
+
+---
+
+### So HTMX? Why consider it?
+
+---
+
+#### It's very small (around 14kb min.gz)
+<ul class="fragment">
+    <li>Production-ready</li>
+    <li>Plays well with other libraries, including React</li>
+    <li>Excelent performance</li>
+</ul>
+
+---
+
+#### Simplifies state management
+<ul class="fragment">
+    <li> No need to manage state in the frontend</li>
+    <li> Keep state in the backend, through cookies, headers, or query parameters</li>
+</ul>
+
+---
+
+#### Decreases complexity
+<ul class="fragment">
+   <li>Less code in the frontend == less complexity and code to maintain</li>
+</ul>
+
+Note:  One company switched their complex React-based solution for a massive 67% codebase reduction, no loss in functionality https://htmx.org/essays/a-real-world-react-to-htmx-port/
+
+---
+
+#### More languages!
+<ul class="fragment">
+    <li>HTMX is not tied to a specific language</li>
+    <li>Use your favorite backend language to generate HTML</li>
+    <li>Stellar support for JS, Typescript, Go.</li>
+</ul>
+
+---
+
+#### Use the full power of the browser
+
+<ul class="fragment">
+    <li>Caching</li>
+    <li>Compression</li>
+    <li>Prefetching</li>
+</ul>
+	
+Note: Performant, very similar to a hydrated React page
+
+---
+
+
+### Sounds good, any downsides?
+
+
+---
+
+#### Limited interactivity
+<div class="fragment">HTMX is not a replacement for React</div>
+<ul>
+    <li class="fragment">Yes, there are some cases where React is the better choice</li>
+    <li class="fragment">However, that is not the majority of the cases. We're talking something like Google Sheets or PWA websites.</li>
+    <li class="fragment">HTMX is a great tool for the majority of web applications</li>
+</ul>
+
+---
+
+#### Too simple
+Seems like this can only be used for hobby projects, small in scope.
+1. Yes it does shine in smaller projects but sometimes that's what clients need.
+2. See https://htmx.org/essays/a-real-world-react-to-htmx-port/ for a counterpoint.
+
+---
+
+#### Separation of concerns
+- Yes, some separation of concerns will be lost but...
+    - We already do this on the regular (tailwindui, jsx, react server components)
+    - We gain Locality of Behavior
+        - "The behaviour of a unit of code should be as obvious as possible by looking only at that unit of code"
+
+---
+
+#### API
+ It makes it extremely difficult to maintain a public API that serves specific HTML if the output is not consistent/dependant on state for a user.
+- Carson recommends having 2 APIs:
+    - Application Level - generic JSON Data API
+        - For general purpose. Shared with other consumers.
+    - Network Architecture Level - Hypermedia API
+        - Specific to our application. Can be modified at a faster pace.
+
+---
+
+Sources:
+- https://htmx.org/essays/ HTMX  Essays by Carson Gross
+- https://htmx.org/essays/hypermedia-friendly-scripting
+- https://hypermedia.systems/ Hypermedia Systems (Carson Gross, Adam Stepinski, Deniz Akşimşek, 2023)
+- https://ics.uci.edu/~fielding/pubs/dissertation/top.htm  Architectural Styles and  
+the Design of Network-based Software Architectures, (Roy Fielding, 2000)
+
+---
+
+## Q&A
+
+---
+
+THANK YOU FOR ATTENDING!
+
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"transition":"slide","_":["HTMX.md"],"static":"."}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) {
+        mermaid.init(mermaidOptions, '.stack.present > .present pre code.mermaid');
+        mermaid.init(mermaidOptions, '.slides > .present:not(.stack) pre code.mermaid');
+      }
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
+    </script>
+  </body>
+</html>
