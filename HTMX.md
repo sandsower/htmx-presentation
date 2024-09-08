@@ -1,5 +1,5 @@
 ---
-title: Foobar
+title: HTMX Fundamentals
 theme: dracula
 revealOptions:
   transition: 'slide'
@@ -20,10 +20,10 @@ Note: Hello everyone! This small brownbag will just go over the fundamentals of 
 ### Features
 
 <ul>
-    <li class="fragment">Add support for the rest of verbs besides `post` and `get`: `put`, `delete`, `patch`</li>
-    <li class="fragment">Extend HTML so any element can issue requests, not just anchors and forms</li>
-    <li class="fragment">Extend HTML to allow for more complex interactions besides just clicks, you can trigger using hover, blur and many other ways to interact</li>
-    <li class="fragment">Extend HTML to allow for targets other than the entire window</li>
+    <li class="fragment">Add support for the rest of verbs besides <code>post</code> and <code>get</code>: <code>put</code>, <code>delete</code>, <code>patch</code></li>
+    <li class="fragment">Extend HTML so any element can issue requests, not just <code>a</code> and <code>form</code></li>
+    <li class="fragment">Extend HTML to allow for more complex interactions besides just <code>click</code>, you can trigger using <code>hover</code>, <code>blur</code> and others</li>
+    <li class="fragment">Extend HTML to allow for targets other elements besides the entire window</li>
     <li class="fragment">Allow engineers to defer state management to the backend, through HATEOAS!</li>
 </ul>
 
@@ -145,7 +145,8 @@ Note: Performant, very similar to a hydrated React page
 ---
 
 #### Limited interactivity
-<div class="fragment">HTMX is not a replacement for React</div>
+
+<p class="fragment">HTMX is not a replacement for React</p>
 <ul>
     <li class="fragment">Yes, there are some cases where React is the better choice</li>
     <li class="fragment">However, that is not the majority of the cases. We're talking something like Google Sheets or PWA websites.</li>
@@ -155,27 +156,50 @@ Note: Performant, very similar to a hydrated React page
 ---
 
 #### Too simple
-Seems like this can only be used for hobby projects, small in scope.
-1. Yes it does shine in smaller projects but sometimes that's what clients need.
-2. See https://htmx.org/essays/a-real-world-react-to-htmx-port/ for a counterpoint.
+
+<ul>
+    <li class="fragment">HTMX shines in smaller projects</li>
+    <li class="fragment">It's not a silver bullet, but it's a great tool to have in your toolbox</li>
+    <li class="fragment">But it can be used in larger projects, see <a href="https://htmx.org/essays/a-real-world-react-to-htmx-port/">https://htmx.org/essays/a-real-world-react-to-htmx-port/</a></li>
+</ul>
+
 
 ---
 
 #### Separation of concerns
-- Yes, some separation of concerns will be lost but...
-    - We already do this on the regular (tailwindui, jsx, react server components)
-    - We gain Locality of Behavior
-        - "The behaviour of a unit of code should be as obvious as possible by looking only at that unit of code"
+
+<ul>
+    <li class="fragment">HTMX can make it harder to separate concerns</li>
+    <li class="fragment">On the other hand, we already do this on the regular (tailwindui, jsx, react server components)</li>
+    <li class="fragment">We gain Locality of Behavior</li>
+        <ul class="fragment">
+            <li><backquote>The behaviour of a unit of code should be as obvious as possible by looking only at that unit of code</backquote></li>
+        </ul>
 
 ---
 
 #### API
- It makes it extremely difficult to maintain a public API that serves specific HTML if the output is not consistent/dependant on state for a user.
-- Carson recommends having 2 APIs:
-    - Application Level - generic JSON Data API
-        - For general purpose. Shared with other consumers.
-    - Network Architecture Level - Hypermedia API
-        - Specific to our application. Can be modified at a faster pace.
+Hypermedia APIs are not as common as JSON APIs. So consumers of your API will need to be aware of this.
+
+<ul>
+    <li class="fragment">Instead, think of 2 APIs</li>
+    <li class="fragment">
+        <ul>
+            <li>Application Level - generic JSON Data API</li>
+            <li>Network Architecture Level - Hypermedia API</li>
+        </ul>
+    </li>
+</ul>
+
+---
+
+#### A different mindset
+
+You will need to think differently about how you structure your application.
+<ul>
+    <li class="fragment">It's a more full-stack or backend-first approach</li>
+    <li class="fragment">State management will be very different</li>
+</ul>
 
 ---
 
@@ -192,4 +216,4 @@ the Design of Network-based Software Architectures, (Roy Fielding, 2000)
 
 ---
 
-THANK YOU FOR ATTENDING!
+# THANK YOU
