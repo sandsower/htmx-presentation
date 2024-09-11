@@ -34,16 +34,16 @@ Note: Hello everyone! This small brownbag will just go over the fundamentals of 
 ### Features
 
 <ul>
-    <li class="fragment">Add support for the rest of verbs besides <code>post</code> and <code>get</code>: <code>put</code>, <code>delete</code>, <code>patch</code></li>
-    <li class="fragment">Extend HTML so any element can issue requests, not just <code>a</code> and <code>form</code></li>
-    <li class="fragment">Extend HTML to allow for more complex interactions besides just <code>click</code>, you can trigger using <code>hover</code>, <code>blur</code> and others</li>
-    <li class="fragment">Extend HTML to allow for targets other elements besides the entire window</li>
-    <li class="fragment">Allow engineers to defer state management to the backend, through HATEOAS!</li>
+    <li class="fragment">Use the full suite of request methods: <code>post</code>, <code>get</code>, <code>put</code>, <code>delete</code>, <code>patch</code></li>
+    <li class="fragment">Any element can issue requests, not just <code>a</code> and <code>form</code></li>
+    <li class="fragment">Interact with more than <code>click</code>, you can interact using <code>hover</code>, <code>blur</code> and others</li>
+    <li class="fragment">Target other elements besides the entire window</li>
+    <li class="fragment">Defer state management to the backend, through HATEOAS!</li>
 </ul>
 
 ---
 
-### HATEOAS?
+### Wtf is HATEOAS?
 
 A small detour
 
@@ -63,7 +63,7 @@ All state is encoded in hypermedia returned by the server.
 
 ---
 
-### What does that mean?
+### What does that even mean?
 
 Not logged in
 
@@ -87,7 +87,7 @@ Logged in
 ```
 ---
 
-### Why HATEOAS?
+### So why use it?
 
 <ul>
     <li class="fragment">Only show what the user can do</li>
@@ -101,7 +101,7 @@ Note: Mention Roy Fielding's excellent doctoral paper, coining REST
 
 ---
 
-### So HTMX? Why consider it?
+### Interesting, but why use HTMX?
 
 ---
 
@@ -192,8 +192,9 @@ Note: Performant, very similar to a hydrated React page
 
 ---
 
-#### API
-Hypermedia APIs are not as common as JSON APIs. So consumers of your API will need to be aware of this.
+#### JSON API/GraphQL
+
+Hypermedia APIs are not as common as JSON APIs, or in our case GraphQL. So consumers of your API will need to be aware of this.
 
 <ul>
     <li class="fragment">Instead, think of 2 APIs</li>
@@ -210,6 +211,7 @@ Hypermedia APIs are not as common as JSON APIs. So consumers of your API will ne
 #### A different mindset
 
 You will need to think differently about how you structure your application.
+
 <ul>
     <li class="fragment">It's a more full-stack or backend-first approach</li>
     <li class="fragment">State management will be very different</li>
@@ -217,7 +219,8 @@ You will need to think differently about how you structure your application.
 
 ---
 
-Sources:
+### Sources 
+
 - https://htmx.org/essays/ HTMX  Essays by Carson Gross
 - https://htmx.org/essays/hypermedia-friendly-scripting
 - https://hypermedia.systems/ Hypermedia Systems (Carson Gross, Adam Stepinski, Deniz Akşimşek, 2023)
